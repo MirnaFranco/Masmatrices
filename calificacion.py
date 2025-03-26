@@ -6,6 +6,14 @@ estudiantes = [
     ['María', [['Lengua', 9], ['Sociales', 10], ['Naturales', 10], ['Matematicas', 9]]]
 ]
 
+# Función para mostrar el menú
+def mostrar_menu():
+    print("--- Menú ---")
+    print("1. Ingresar o modificar calificación")
+    print("2. Mostrar todos los datos")
+    print("3. Salir")
+    return input("Elige una opción: ")
+
 # Función para agregar o modificar calificaciones
 def agregar_calificacion(nombre, materia, calificacion):
     # Buscar si el estudiante ya está en la lista
@@ -26,6 +34,25 @@ def agregar_calificacion(nombre, materia, calificacion):
     estudiantes.append([nombre, [[materia, calificacion]]])
     print(f'Nuevo estudiante {nombre} registrado con calificación en {materia}: {calificacion}')
 
-# Ejemplo de uso
-agregar_calificacion('Juan', 'Matematicas', 9)  # Modifica la calificación
-agregar_calificacion('Pedro', 'Quimica', 10)  # Agrega un nuevo estudiante
+# Función para mostrar todos los datos
+def mostrar_datos():
+    print("\n--- Datos de estudiantes ---")
+    for estudiante in estudiantes:
+        print(f"{estudiante[0]}: {estudiante[1]}")
+
+# Programa principal
+while True:
+    opcion = mostrar_menu()
+
+    if opcion == "1":
+        nombre = input("Nombre del estudiante: ")
+        materia = input("Materia: ")
+        calificacion = float(input("Calificación: "))
+        agregar_calificacion(nombre, materia, calificacion)
+    elif opcion == "2":
+        mostrar_datos()
+    elif opcion == "3":
+        print("¡Hasta luego!")
+        break
+    else:
+        print("Opción no válida. Intenta nuevamente.")
